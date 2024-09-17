@@ -31,14 +31,21 @@ public class TaskController {
     }
 
     @GetMapping
-    public List<TaskDTO> getAllTasks() {
-        return taskRepository.findAll().stream()
+    public List<TaskDTO> getAllTasks(@RequestParam(value = "completed", required = false) Optional<Boolean> completed) {
+        List<Task> tasks;
+        if (completed.isPresent()) {
+            tasks = taskRepository.findByCompleted(completed.get());
+        } else {
+            tasks = taskRepository.findAll();
+        }
+
+        return tasks.stream()
                 .map(this::convertToDTO)
                 .toList();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TaskDTO> getTaskById(@PathVariable Long id) {
+    public ResponseEntity<TaskDTO> getTaskById(@PathVariable("id") Long id) {
         Optional<Task> optionalTask = taskRepository.findById(id);
         return optionalTask
                 .map(task -> ResponseEntity.ok(convertToDTO(task)))
@@ -54,7 +61,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TaskDTO> updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
+    public ResponseEntity<TaskDTO> updateTask(@PathVariable("id") Long id, @RequestBody TaskDTO taskDTO) {
         Optional<Task> task = taskRepository.findById(id);
         if (task.isPresent()) {
             Task taskToUpdate = task.get();
@@ -69,7 +76,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTask(@PathVariable("id") Long id) {
         if (taskRepository.existsById(id)) {
             taskRepository.deleteById(id);
             return ResponseEntity.noContent().build();
