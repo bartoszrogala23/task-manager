@@ -1,6 +1,7 @@
 package example.taskmanager.controller;
 
 import example.taskmanager.TaskRepository;
+import example.taskmanager.dto.TaskDTO;
 import example.taskmanager.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,35 +17,52 @@ public class TaskController {
     @Autowired
     private TaskRepository taskRepository;
 
+    private TaskDTO convertToDTO(Task task) {
+        return new TaskDTO(task.getId(), task.getTitle(), task.getDescription(), task.isCompleted());
+    }
+
+    private Task convertToEntity(TaskDTO taskDTO) {
+        Task task = new Task();
+        task.setId(taskDTO.getId());
+        task.setTitle(taskDTO.getTitle());
+        task.setDescription(taskDTO.getDescription());
+        task.setCompleted(taskDTO.isCompleted());
+        return task;
+    }
+
     @GetMapping
-    public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+    public List<TaskDTO> getAllTasks() {
+        return taskRepository.findAll().stream()
+                .map(this::convertToDTO)
+                .toList();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
-        Optional<Task> task = taskRepository.findById(id);
-        return task
-                .map(ResponseEntity::ok)
+    public ResponseEntity<TaskDTO> getTaskById(@PathVariable Long id) {
+        Optional<Task> optionalTask = taskRepository.findById(id);
+        return optionalTask
+                .map(task -> ResponseEntity.ok(convertToDTO(task)))
                 .orElseGet(() -> ResponseEntity.notFound()
                         .build());
     }
 
     @PostMapping
-    public Task createTask(@RequestBody Task task) {
-        return taskRepository.save(task);
+    public TaskDTO createTask(@RequestBody TaskDTO taskDTO) {
+        Task task = convertToEntity(taskDTO);
+        Task savedTask = taskRepository.save(task);
+        return convertToDTO(savedTask);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task taskDetails) {
+    public ResponseEntity<TaskDTO> updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
         Optional<Task> task = taskRepository.findById(id);
         if (task.isPresent()) {
             Task taskToUpdate = task.get();
-            taskToUpdate.setTitle(taskDetails.getTitle());
-            taskToUpdate.setDescription(taskDetails.getDescription());
-            taskToUpdate.setCompleted(taskToUpdate.isCompleted());
+            taskToUpdate.setTitle(taskDTO.getTitle());
+            taskToUpdate.setDescription(taskDTO.getDescription());
+            taskToUpdate.setCompleted(taskDTO.isCompleted());
             Task updatedTask = taskRepository.save(taskToUpdate);
-            return ResponseEntity.ok(updatedTask);
+            return ResponseEntity.ok(convertToDTO(updatedTask));
         } else {
             return ResponseEntity.notFound().build();
         }
