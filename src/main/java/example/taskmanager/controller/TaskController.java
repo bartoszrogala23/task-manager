@@ -1,8 +1,9 @@
 package example.taskmanager.controller;
 
+import example.taskmanager.TaskMapper;
 import example.taskmanager.TaskRepository;
 import example.taskmanager.dto.TaskDTO;
-import example.taskmanager.model.Task;
+import example.taskmanager.model.TaskEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,29 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import static example.taskmanager.TaskMapper.convertToEntity;
+
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
 
     @Autowired
     private TaskRepository taskRepository;
-
-    private TaskDTO convertToDTO(Task task) {
-        return new TaskDTO(task.getId(), task.getTitle(), task.getDescription(), task.isCompleted());
-    }
-
-    private Task convertToEntity(TaskDTO taskDTO) {
-        Task task = new Task();
-        task.setId(taskDTO.getId());
-        task.setTitle(taskDTO.getTitle());
-        task.setDescription(taskDTO.getDescription());
-        task.setCompleted(taskDTO.isCompleted());
-        return task;
-    }
+    @Autowired
+    private TaskMapper taskMapper;
 
     @GetMapping
     public List<TaskDTO> getAllTasks(@RequestParam(value = "completed", required = false) Optional<Boolean> completed) {
-        List<Task> tasks;
+        List<TaskEntity> tasks;
         if (completed.isPresent()) {
             tasks = taskRepository.findByCompleted(completed.get());
         } else {
@@ -40,36 +32,36 @@ public class TaskController {
         }
 
         return tasks.stream()
-                .map(this::convertToDTO)
+                .map(taskMapper::convertToDTO)
                 .toList();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<TaskDTO> getTaskById(@PathVariable("id") Long id) {
-        Optional<Task> optionalTask = taskRepository.findById(id);
+        Optional<TaskEntity> optionalTask = taskRepository.findById(id);
         return optionalTask
-                .map(task -> ResponseEntity.ok(convertToDTO(task)))
+                .map(task -> ResponseEntity.ok(taskMapper.convertToDTO(task)))
                 .orElseGet(() -> ResponseEntity.notFound()
                         .build());
     }
 
     @PostMapping
     public TaskDTO createTask(@RequestBody TaskDTO taskDTO) {
-        Task task = convertToEntity(taskDTO);
-        Task savedTask = taskRepository.save(task);
-        return convertToDTO(savedTask);
+        TaskEntity task = convertToEntity(taskDTO);
+        TaskEntity savedTask = taskRepository.save(task);
+        return taskMapper.convertToDTO(savedTask);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskDTO> updateTask(@PathVariable("id") Long id, @RequestBody TaskDTO taskDTO) {
-        Optional<Task> task = taskRepository.findById(id);
+        Optional<TaskEntity> task = taskRepository.findById(id);
         if (task.isPresent()) {
-            Task taskToUpdate = task.get();
+            TaskEntity taskToUpdate = task.get();
             taskToUpdate.setTitle(taskDTO.getTitle());
             taskToUpdate.setDescription(taskDTO.getDescription());
             taskToUpdate.setCompleted(taskDTO.isCompleted());
-            Task updatedTask = taskRepository.save(taskToUpdate);
-            return ResponseEntity.ok(convertToDTO(updatedTask));
+            TaskEntity updatedTask = taskRepository.save(taskToUpdate);
+            return ResponseEntity.ok(taskMapper.convertToDTO(updatedTask));
         } else {
             return ResponseEntity.notFound().build();
         }
