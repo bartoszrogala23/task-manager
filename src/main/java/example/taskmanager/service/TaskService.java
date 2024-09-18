@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static example.taskmanager.TaskMapper.convertToEntity;
@@ -37,12 +38,11 @@ public class TaskService {
                 .toList();
     }
 
-    public ResponseEntity<TaskDTO> getTaskById(@PathVariable("id") Long id) {
+    public TaskDTO getTaskById(@PathVariable("id") Long id) {
         Optional<TaskEntity> optionalTask = taskRepository.findById(id);
         return optionalTask
-                .map(task -> ResponseEntity.ok(taskMapper.convertToDTO(task)))
-                .orElseGet(() -> ResponseEntity.notFound()
-                        .build());
+                .map(task -> taskMapper.convertToDTO(task))
+                .orElseThrow(() -> new NoSuchElementException("Task with ID " + id + " not found"));
     }
 
     public TaskDTO createTask(@RequestBody TaskDTO taskDTO) {
@@ -51,7 +51,7 @@ public class TaskService {
         return taskMapper.convertToDTO(savedTask);
     }
 
-    public ResponseEntity<TaskDTO> updateTask(@PathVariable("id") Long id, @RequestBody TaskDTO taskDTO) {
+    public TaskDTO updateTask(@PathVariable("id") Long id, @RequestBody TaskDTO taskDTO) {
         Optional<TaskEntity> task = taskRepository.findById(id);
         if (task.isPresent()) {
             TaskEntity taskToUpdate = task.get();
@@ -59,18 +59,17 @@ public class TaskService {
             taskToUpdate.setDescription(taskDTO.getDescription());
             taskToUpdate.setCompleted(taskDTO.isCompleted());
             TaskEntity updatedTask = taskRepository.save(taskToUpdate);
-            return ResponseEntity.ok(taskMapper.convertToDTO(updatedTask));
+            return taskMapper.convertToDTO(updatedTask);
         } else {
-            return ResponseEntity.notFound().build();
+            throw new NoSuchElementException("Task with ID " + id + " not found");
         }
     }
 
-    public ResponseEntity<Void> removeTask(@PathVariable("id") Long id) {
+    public void removeTask(@PathVariable("id") Long id) {
         if (taskRepository.existsById(id)) {
             taskRepository.deleteById(id);
-            return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.notFound().build();
+            throw new NoSuchElementException("Task with ID " + id + " not found");
         }
     }
 }

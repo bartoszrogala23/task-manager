@@ -2,7 +2,6 @@ package example.taskmanager;
 
 import example.taskmanager.dto.TaskDTO;
 import example.taskmanager.service.TaskService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +11,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/api/tasks")
 public class TaskController {
-    private TaskService taskService;
+    TaskService taskService;
 
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
@@ -24,23 +23,22 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TaskDTO> getTask(@PathVariable("id") Long id) {
+    public TaskDTO getTask(@PathVariable("id") Long id) {
         return taskService.getTaskById(id);
     }
 
     @PostMapping
-    public ResponseEntity<TaskDTO> postTask(@RequestBody TaskDTO taskDTO) {
-        TaskDTO createdTask = taskService.createTask(taskDTO);
-        return ResponseEntity.ok(createdTask);
+    public TaskDTO postTask(@RequestBody TaskDTO taskDTO) {
+        return taskService.createTask(taskDTO);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TaskDTO> putTask(@PathVariable("id") Long id, @RequestBody TaskDTO taskDTO) {
+    public TaskDTO putTask(@PathVariable("id") Long id, @RequestBody TaskDTO taskDTO) {
         return taskService.updateTask(id, taskDTO);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTask(@PathVariable("id") Long id) {
-        return taskService.removeTask(id);
+    public void deleteTask(@PathVariable("id") Long id) {
+        taskService.removeTask(id);
     }
 }
