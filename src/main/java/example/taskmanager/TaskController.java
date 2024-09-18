@@ -12,7 +12,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/api/tasks")
 public class TaskController {
-    TaskService taskService;
+    private TaskService taskService;
 
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
