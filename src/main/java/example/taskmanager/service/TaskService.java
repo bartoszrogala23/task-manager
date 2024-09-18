@@ -1,4 +1,4 @@
-package example.taskmanager.controller;
+package example.taskmanager.service;
 
 import example.taskmanager.TaskMapper;
 import example.taskmanager.TaskRepository;
@@ -6,23 +6,24 @@ import example.taskmanager.dto.TaskDTO;
 import example.taskmanager.model.TaskEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
 
 import static example.taskmanager.TaskMapper.convertToEntity;
 
-@RestController
-@RequestMapping("/api/tasks")
-public class TaskController {
+@Component
+public class TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
     @Autowired
     private TaskMapper taskMapper;
 
-    @GetMapping
     public List<TaskDTO> getAllTasks(@RequestParam(value = "completed", required = false) Optional<Boolean> completed) {
         List<TaskEntity> tasks;
         if (completed.isPresent()) {
@@ -36,7 +37,6 @@ public class TaskController {
                 .toList();
     }
 
-    @GetMapping("/{id}")
     public ResponseEntity<TaskDTO> getTaskById(@PathVariable("id") Long id) {
         Optional<TaskEntity> optionalTask = taskRepository.findById(id);
         return optionalTask
@@ -45,14 +45,12 @@ public class TaskController {
                         .build());
     }
 
-    @PostMapping
     public TaskDTO createTask(@RequestBody TaskDTO taskDTO) {
         TaskEntity task = convertToEntity(taskDTO);
         TaskEntity savedTask = taskRepository.save(task);
         return taskMapper.convertToDTO(savedTask);
     }
 
-    @PutMapping("/{id}")
     public ResponseEntity<TaskDTO> updateTask(@PathVariable("id") Long id, @RequestBody TaskDTO taskDTO) {
         Optional<TaskEntity> task = taskRepository.findById(id);
         if (task.isPresent()) {
@@ -67,8 +65,7 @@ public class TaskController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTask(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> removeTask(@PathVariable("id") Long id) {
         if (taskRepository.existsById(id)) {
             taskRepository.deleteById(id);
             return ResponseEntity.noContent().build();
