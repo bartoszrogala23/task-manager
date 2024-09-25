@@ -9,6 +9,6 @@ public class TaskManagerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TaskManagerApplication.class, args);
-//        Specification.feedData();
+        Specification.feedData();
     }
 }
