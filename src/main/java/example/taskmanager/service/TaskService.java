@@ -19,10 +19,13 @@ import static example.taskmanager.TaskMapper.convertToEntity;
 @Service
 public class TaskService {
 
-    @Autowired
     private TaskRepository taskRepository;
-    @Autowired
     private TaskMapper taskMapper;
+
+    public TaskService(TaskRepository taskRepository, TaskMapper taskMapper) {
+        this.taskRepository = taskRepository;
+        this.taskMapper = taskMapper;
+    }
 
     public List<TaskDTO> getAllTasks(@RequestParam(value = "completed", required = false) Optional<Boolean> completed) {
         List<TaskEntity> tasks;
