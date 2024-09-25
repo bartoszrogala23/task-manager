@@ -4,7 +4,7 @@ import example.taskmanager.TaskMapper;
 import example.taskmanager.TaskRepository;
 import example.taskmanager.dto.TaskDTO;
 import example.taskmanager.model.TaskEntity;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,15 +17,11 @@ import java.util.Optional;
 import static example.taskmanager.TaskMapper.convertToEntity;
 
 @Service
+@RequiredArgsConstructor
 public class TaskService {
 
-    private TaskRepository taskRepository;
-    private TaskMapper taskMapper;
-
-    public TaskService(TaskRepository taskRepository, TaskMapper taskMapper) {
-        this.taskRepository = taskRepository;
-        this.taskMapper = taskMapper;
-    }
+    private final TaskRepository taskRepository;
+    private final TaskMapper taskMapper;
 
     public List<TaskDTO> getAllTasks(@RequestParam(value = "completed", required = false) Optional<Boolean> completed) {
         List<TaskEntity> tasks;
