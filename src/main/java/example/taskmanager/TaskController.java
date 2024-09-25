@@ -2,23 +2,21 @@ package example.taskmanager;
 
 import example.taskmanager.dto.TaskDTO;
 import example.taskmanager.service.TaskService;
-import org.springframework.stereotype.Controller;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/api/tasks")
+@RequiredArgsConstructor
 public class TaskController {
-    TaskService taskService;
 
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
+    private final TaskService taskService;
 
     @GetMapping
-    public @ResponseBody List<TaskDTO> getTasks(@RequestParam(value = "completed", required = false) Optional<Boolean> completed) {
+    public List<TaskDTO> getTasks(@RequestParam(value = "completed", required = false) Optional<Boolean> completed) {
         return taskService.getAllTasks(completed);
     }
 

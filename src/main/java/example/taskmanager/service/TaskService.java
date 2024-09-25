@@ -5,7 +5,7 @@ import example.taskmanager.TaskRepository;
 import example.taskmanager.dto.TaskDTO;
 import example.taskmanager.model.TaskEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 import static example.taskmanager.TaskMapper.convertToEntity;
 
-@Component
+@Service
 public class TaskService {
 
     @Autowired
