@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class TaskManagerTest {
 
-
     // response approach
     @Test
     @DisplayName("Task should be created successfully")
