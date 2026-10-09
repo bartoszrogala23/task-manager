@@ -7,28 +7,7 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f705545d-bf00-4185-88f3-ae656a707df8" name="Changes" comment="update pom dependencies and plugins for jenkins">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/TaskManagerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/taskmanager/TaskManagerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/testspecification/Endpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/specification/Endpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/testspecification/ResponseParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/specification/ResponseParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/testspecification/Specification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/specification/Specification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/testspecification/TaskManagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/specification/TaskManagerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/testspecification/TaskModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/specification/TaskModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/TaskManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/TaskManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/TaskManagerApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/example/taskmanager/TaskManagerApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/Endpoint.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/ResponseParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/Specification.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/TaskManagerService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/TaskModel$TaskModelBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/TaskModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TaskManagerTest.class" beforeDir="false" />
-    </list>
+    <list default="true" id="f705545d-bf00-4185-88f3-ae656a707df8" name="Changes" comment="refactor the architecture" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -377,7 +356,23 @@
       <option name="project" value="LOCAL" />
       <updated>1791530405417</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="refactor the architecture">
+      <option name="closed" value="true" />
+      <created>1791531569580</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1791531569580</updated>
+    </task>
+    <task id="LOCAL-00025" summary="refactor the architecture">
+      <option name="closed" value="true" />
+      <created>1791531602092</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1791531602092</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -421,7 +416,8 @@
     <MESSAGE value="remove unnecessary dependency" />
     <MESSAGE value="remove unnecessary dependencies" />
     <MESSAGE value="update pom dependencies and plugins for jenkins" />
-    <option name="LAST_COMMIT_MESSAGE" value="update pom dependencies and plugins for jenkins" />
+    <MESSAGE value="refactor the architecture" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor the architecture" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
