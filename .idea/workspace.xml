@@ -7,9 +7,27 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f705545d-bf00-4185-88f3-ae656a707df8" name="Changes" comment="remove unnecessary dependency">
+    <list default="true" id="f705545d-bf00-4185-88f3-ae656a707df8" name="Changes" comment="update pom dependencies and plugins for jenkins">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/TaskManagerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/taskmanager/TaskManagerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/testspecification/Endpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/specification/Endpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/testspecification/ResponseParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/specification/ResponseParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/testspecification/Specification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/specification/Specification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/testspecification/TaskManagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/specification/TaskManagerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/taskmanager/testspecification/TaskModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/specification/TaskModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/TaskManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/example/taskmanagerservice/TaskManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/TaskManagerApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/example/taskmanager/TaskManagerApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/Endpoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/ResponseParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/Specification.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/TaskManagerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/TaskModel$TaskModelBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/example/taskmanager/testspecification/TaskModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/TaskManagerTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +75,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -84,28 +105,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.TaskManagerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskManagerTest.createTaskTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskManagerTest.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Bartosz/projects/TaskManager3/src/main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.TaskManagerApplication.executor": "Run",
+    "JUnit.TaskManagerTest (1).executor": "Run",
+    "JUnit.TaskManagerTest.createTaskTest.executor": "Run",
+    "JUnit.TaskManagerTest.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Bartosz/projects/TaskManager3/src/main",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Bartosz\projects\TaskManager3\src\main" />
       <recent name="C:\Bartosz\projects\TaskManager3\src\main\java" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Bartosz\projects\TaskManager3\src\main\test\java\example\taskmanagerservice" />
+      <recent name="C:\Bartosz\projects\TaskManager3\src\main\test\java\example\taskmanagerservicetest" />
+      <recent name="C:\Bartosz\projects\TaskManager3\src\main\test\java\example" />
+      <recent name="C:\Bartosz\projects\TaskManager3\src\main\java" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.TaskManagerTest">
+  <component name="RunManager" selected="JUnit.TaskManagerTest (1)">
     <configuration name="TaskManagerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="example.taskmanager.TaskManagerApplication" />
       <module name="TaskManager3" />
@@ -115,6 +143,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskManagerTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TaskManager3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="example.taskmanagerservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="example.taskmanagerservice" />
+      <option name="MAIN_CLASS_NAME" value="example.taskmanagerservice.TaskManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -138,16 +181,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaskManagerTest.getTaskByIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TaskManager3" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TaskManagerTest" />
-      <option name="METHOD_NAME" value="getTaskByIdTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TaskManagerTest.taskByIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TaskManager3" />
       <option name="PACKAGE_NAME" value="" />
@@ -160,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TaskManagerTest" />
+        <item itemvalue="JUnit.TaskManagerTest (1)" />
         <item itemvalue="Application.TaskManagerApplication" />
+        <item itemvalue="JUnit.TaskManagerTest" />
         <item itemvalue="JUnit.TaskManagerTest.createTaskTest" />
         <item itemvalue="JUnit.TaskManagerTest.taskByIdTest" />
-        <item itemvalue="JUnit.TaskManagerTest.getTaskByIdTest" />
       </list>
     </recent_temporary>
   </component>
@@ -328,7 +361,23 @@
       <option name="project" value="LOCAL" />
       <updated>1791529071449</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="remove unnecessary dependencies">
+      <option name="closed" value="true" />
+      <created>1791530187979</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1791530187979</updated>
+    </task>
+    <task id="LOCAL-00023" summary="update pom dependencies and plugins for jenkins">
+      <option name="closed" value="true" />
+      <created>1791530405417</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1791530405417</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -370,7 +419,9 @@
     <MESSAGE value="task service adjust" />
     <MESSAGE value="ad" />
     <MESSAGE value="remove unnecessary dependency" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove unnecessary dependency" />
+    <MESSAGE value="remove unnecessary dependencies" />
+    <MESSAGE value="update pom dependencies and plugins for jenkins" />
+    <option name="LAST_COMMIT_MESSAGE" value="update pom dependencies and plugins for jenkins" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,4 +1,4 @@
-package example.taskmanager.testspecification;
+package example.taskmanagerservice.specification;
 
 import com.github.javafaker.Faker;
 

@@ -1,1 +1,8 @@
+example\taskmanager\model\TaskEntity.class
+example\taskmanager\service\TaskService.class
+example\taskmanager\TaskController.class
+example\taskmanager\dto\TaskDTO.class
+example\taskmanager\configuration\OpenApiConfig.class
+example\taskmanager\TaskMapper.class
 example\taskmanager\TaskRepository.class
+example\taskmanager\TaskManagerApplication.class

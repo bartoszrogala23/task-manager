@@ -1,4 +1,4 @@
-package example.taskmanager.testspecification;
+package example.taskmanagerservice.specification;
 
 import lombok.Builder;
 import lombok.Value;

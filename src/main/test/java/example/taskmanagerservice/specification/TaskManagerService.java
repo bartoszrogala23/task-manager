@@ -1,9 +1,9 @@
-package example.taskmanager.testspecification;
+package example.taskmanagerservice.specification;
 
 import io.restassured.response.Response;
 
-import static example.taskmanager.testspecification.Endpoint.TASK;
-import static example.taskmanager.testspecification.Endpoint.TASKS;
+import static example.taskmanagerservice.specification.Endpoint.TASK;
+import static example.taskmanagerservice.specification.Endpoint.TASKS;
 import static io.restassured.RestAssured.given;
 
 public class TaskManagerService {

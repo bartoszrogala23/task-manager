@@ -1,4 +1,4 @@
-package example.taskmanager.testspecification;
+package example.taskmanagerservice.specification;
 
 import java.util.Arrays;
 import java.util.List;

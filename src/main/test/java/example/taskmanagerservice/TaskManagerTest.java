@@ -1,17 +1,24 @@
-import example.taskmanager.testspecification.Specification;
-import example.taskmanager.testspecification.TaskManagerService;
+package example.taskmanagerservice;
+
+import example.taskmanagerservice.specification.Specification;
+import example.taskmanagerservice.specification.TaskManagerService;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static example.taskmanager.testspecification.Specification.addTask;
-import static example.taskmanager.testspecification.Specification.buildSampleTask;
+import static example.taskmanagerservice.specification.Specification.*;
 import static groovy.json.JsonOutput.toJson;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TaskManagerTest {
+
+    @BeforeAll
+    public static void setup() {
+        feedData();
+    }
 
     // response approach
     @Test
